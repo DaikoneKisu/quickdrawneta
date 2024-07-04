@@ -4,6 +4,7 @@ import numpy as np
 from collections import deque
 import cv2
 import random
+from datetime import datetime, timedelta
 
 model = load_model('model/QuickDraw.h5')
 
@@ -14,6 +15,10 @@ def load_labels(filename):
     return labels
 
 categories = load_labels('model/categories.txt')
+
+INTERVALO_REFRESCO = 500  # En milisegundos
+TIEMPO_INICIAL = 50  # En segundos
+MAX_RONDAS = 6  # Número máximo de rondas
 
 class QuickDrawApp:
     def __init__(self, root):
@@ -37,8 +42,11 @@ class QuickDrawApp:
         self.clear_button = tk.Button(root, text="Borrar", command=self.clear)
         self.clear_button.pack()
 
-        self.new_category_button = tk.Button(root, text="Nueva Categoría", command=self.set_random_category)
-        self.new_category_button.pack()
+        self.round_label = tk.Label(root, text="Ronda: 1", font=("Helvetica", 16), fg='purple')
+        self.round_label.pack()
+        
+        # self.new_category_button = tk.Button(root, text="Nueva Categoría", command=self.set_random_category)
+        # self.new_category_button.pack()
 
         self.points = 0
         self.points_label = tk.Label(root, text=f"Puntos: {self.points}", font=("Helvetica", 16), fg='green')
@@ -48,39 +56,62 @@ class QuickDrawApp:
         self.timer_label.pack()
 
         self.used_categories = []  # Lista para almacenar categorías usadas
+        self.remaining_categories = categories.copy()  # Lista de categorías restantes
 
+        self.rondas = 0  # Contador de rondas
         self.drawing = False
 
         self.set_random_category()
-        self.start_timer(50)  # Iniciar el contador de tiempo con 50 segundos
+        self.start_timer(TIEMPO_INICIAL)  # Iniciar el contador de tiempo con 50 segundos
+
+        # Botones de reiniciar y salir, inicialmente deshabilitados
+        self.restart_button = tk.Button(root, text="Reiniciar Juego", command=self.restart_game, state=tk.DISABLED)
+        self.restart_button.pack(side=tk.LEFT, padx=10)
+
+        self.exit_button = tk.Button(root, text="Salir", command=self.root.quit, state=tk.DISABLED)
+        self.exit_button.pack(side=tk.RIGHT, padx=10)
 
     def start_timer(self, seconds):
-        self.remaining_time = seconds
-        self.update_timer()
+        self.hora_final = datetime.now() + timedelta(seconds=seconds)
+        self.temporizador_corriendo = True
+        self.refrescar_tiempo_restante()
 
-    def update_timer(self):
-        self.timer_label.config(text=f"Tiempo: {self.remaining_time}")
-        if self.remaining_time > 0:
-            self.remaining_time -= 1
-            self.root.after(1000, self.update_timer)
-        else:
-            self.timer_label.config(text="Tiempo: 0")
-            self.clear_and_set_new_category()
-            self.points -= 1
-            self.points_label.config(text=f"Puntos: {self.points}")
-            self.canvas.create_text(320, 240, text="TIEMPO!", fill="white", font=("Helvetica", 36))
-            self.root.after(3000, self.clear)
-            self.stop_timer()
-            self.start_timer(50)
+    def obtener_tiempo_restante(self):
+        segundos_restantes = (self.hora_final - datetime.now()).total_seconds()
+        if segundos_restantes < 0:
+            segundos_restantes = 0
+        return int(segundos_restantes)
+
+    def refrescar_tiempo_restante(self):
+        if self.temporizador_corriendo:
+            tiempo_restante = self.obtener_tiempo_restante()
+            self.timer_label.config(text=f"Tiempo: {tiempo_restante}")
+            if tiempo_restante > 0:
+                self.root.after(INTERVALO_REFRESCO, self.refrescar_tiempo_restante)
+            else:
+                self.timer_label.config(text="Tiempo: 0")
+                # self.points -= 1
+                # self.points_label.config(text=f"Puntos: {self.points}")
+                self.canvas.create_text(320, 240, text="TIEMPO!", fill="white", font=("Helvetica", 36))
+                self.root.after(3000, self.clear_and_set_new_category)
+
+    def detener_temporizador(self):
+        self.temporizador_corriendo = False
 
     def set_random_category(self):
-        # Obtener una categoría aleatoria que no haya sido usada antes
-        while True:
-            self.current_category = random.choice(categories)
-            if self.current_category not in self.used_categories:
-                self.used_categories.append(self.current_category)
-                break
+        if self.rondas >= MAX_RONDAS:
+            self.end_game()
+            return
+
+        if not self.remaining_categories:
+            self.remaining_categories = categories.copy()  # Reiniciar la lista si se han usado todas las categorías
+            self.used_categories = []  # Limpiar la lista de categorías usadas
+
+        self.current_category = random.choice(self.remaining_categories)
+        self.remaining_categories.remove(self.current_category)
+        self.used_categories.append(self.current_category)
         
+        self.round_label.config(text=f"Ronda: {(self.rondas)+1}")
         self.category_label.config(text=f"Dibuja: {self.current_category}")
 
     def paint(self, event):
@@ -120,21 +151,41 @@ class QuickDrawApp:
                         self.points += 1
                         self.points_label.config(text=f"Puntos: {self.points}")
                         self.canvas.create_text(320, 240, text="FELICIDADES!", fill="white", font=("Helvetica", 36))
-                        self.root.after(3000, self.clear_and_set_new_category)
-                        self.start_timer(50)
+                        self.detener_temporizador()
+                        self.rondas += 1  # Incrementar el contador de rondas
+                        if self.rondas < MAX_RONDAS:
+                            self.root.after(3000, self.clear_and_set_new_category)
+                        else:
+                            self.root.after(3000, self.end_game)
 
-    def stop_timer(self):
-        self.root.after_cancel(self.update_timer)
-    
     def clear_and_set_new_category(self):
         self.clear()
         self.set_random_category()
+        self.start_timer(TIEMPO_INICIAL)
 
     def clear(self):
         self.pts = deque(maxlen=512)
         self.blackboard = np.zeros((480, 640, 3), dtype=np.uint8)
         self.canvas.delete("all")
         self.label.config(text="")
+
+    def end_game(self):
+        self.clear()
+        self.canvas.create_text(320, 240, text=f"TU PUNTUACION: {self.points}", fill="white", font=("Helvetica", 36))
+        self.detener_temporizador()
+        self.restart_button.config(state=tk.NORMAL)  # Habilitar el botón de reiniciar
+        self.exit_button.config(state=tk.NORMAL)  # Habilitar el botón de salir
+
+    def restart_game(self):
+        self.rondas = 0
+        self.points = 0
+        self.points_label.config(text=f"Puntos: {self.points}")
+        self.clear()
+        self.set_random_category()
+        self.start_timer(TIEMPO_INICIAL)
+        self.round_label.config(text=f"Ronda: {(self.rondas)+1}")
+        self.restart_button.config(state=tk.DISABLED)
+        self.exit_button.config(state=tk.DISABLED)
 
 def keras_predict(model, image):
     processed = keras_process_image(image)
