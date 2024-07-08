@@ -1,48 +1,48 @@
 portaaviones
-avión
+avion
 despertador
 ambulancia
-ángel
-migración de animales
+angel
+migracion de animales
 hormiga
 yunque
 manzana
 brazo
-espárrago
+esparrago
 hacha
 mochila
-plátano
+platano
 venda
 granero
-bate de béisbol
-béisbol
+bate de beisbol
+beisbol
 cesta
 baloncesto
-murciélago
-bañera
+murcielago
+banera
 playa
 oso
 barba
 cama
 abeja
-cinturón
+cinturon
 banco
 bicicleta
 binoculares
-pastel de cumpleaños
+pastel de cumpleanos
 mora
 libro
-tapón de botella
+tapon de botella
 pajarita
 pulsera
 cerebro
 pan
 puente
-brócoli
+brocoli
 escoba
 cubo
 bulldozer
-autobús
+autobus
 arbusto
 mariposa
 cactus
@@ -50,46 +50,46 @@ pastel
 calculadora
 calendario
 camello
-cámara
+camara
 camuflaje
 fogata
 vela
-cañón
-canoa (1)
+canon
+canoa
 canoa
 zanahoria
 castillo
 gato
 ventilador de techo
-teléfono celular
+telefono celular
 violonchelo
 silla
 candelabro
-círculo
+circulo
 reloj
 nube
-taza de café
-brújula
+taza de cafe
+brujula
 computadora
 galleta
-nevera portátil
-sofá
+nevera portatil
+sofa
 vaca
 cangrejo
-crayón
+crayon
 cocodrilo
 corona
 barco de crucero
 taza
 diamante
 lavavajillas
-trampolín
+trampolin
 perro
-delfín
+delfin
 donut
 puerta
-dragón
-cómoda
+dragon
+comoda
 taladro
 tambores
 pato
@@ -108,25 +108,25 @@ valla
 dedo
 hidrante
 chimenea
-camión de bomberos (1)
-camión de bomberos
+camion de bomberos
+camion de bomberos
 flamenco
 linterna
 chanclas
-lámpara de pie
+lampara de pie
 flor
 platillo volador
 pie
 tenedor
 rana
-sartén
-manguera de jardín
-jardín
+sarten
+manguera de jardin
+jardin
 jirafa
 perilla
 palo de golf
 uvas
-césped
+cesped
 guitarra
 hamburguesa
 martillo
@@ -135,23 +135,23 @@ arpa
 sombrero
 auriculares
 erizo
-helicóptero
+helicoptero
 casco
-hexágono
+hexagono
 disco de hockey
 palo de hockey
 caballo
 hospital
-globo aerostático
+globo aerostatico
 perro caliente
 jacuzzi
 reloj de arena
 planta de casa
 casa
-huracán
+huracan
 helado
 chaqueta
-cárcel
+carcel
 canguro
 llave
 teclado
@@ -159,60 +159,60 @@ rodilla
 cuchillo
 escalera
 linterna
-portátil
+portatil
 hoja
 pierna
 bombilla
 encendedor
 faro
-relámpago
-línea
-león
-lápiz labial
+relampago
+linea
+leon
+lapiz labial
 langosta
 piruleta
-buzón
+buzon
 mapa
 marcador
 cerillas
-megáfono
-ratón
+megafono
+raton
 bigote
 boca
 taza
-champiñón
+champinon
 clavo
 collar
 nariz
-océano
-octágono
+oceano
+octagono
 pulpo
 cebolla
 horno
-búho
+buho
 lata de pintura
 pincel
 palmera
 panda
 pantalones
 clip
-paracaídas
+paracaidas
 loro
 pasaporte
-maní
+mani
 pera
 guisantes
-lápiz
-pingüino
+lapiz
+pinguino
 piano
 camioneta
 marco de foto
 cerdo
 almohada
-piña
+pina
 pizza
 alicates
-coche de policía
+coche de policia
 estanque
 piscina
 paleta
@@ -229,20 +229,20 @@ rastrillo
 control remoto
 rinoceronte
 rifle
-río
-montaña rusa
+rio
+montana rusa
 patines
 velero
-sándwich
+sandwich
 sierra
-saxofón
-autobús escolar
+saxofon
+autobus escolar
 tijeras
-escorpión
+escorpion
 destornillador
 tortuga marina
 sube y baja
-tiburón
+tiburon
 oveja
 zapato
 pantalones cortos
@@ -257,22 +257,22 @@ caracol
 serpiente
 snorkel
 copo de nieve
-muñeco de nieve
-balón de fútbol
-calcetín
-lancha rápida
-araña
+muneco de nieve
+balon de futbol
+calcetin
+lancha rapida
+arana
 cuchara
-hoja de cálculo
+hoja de calculo
 cuadrado
 garabato
 escaleras
 estrella
 bistec
-estéreo
+estereo
 estetoscopio
 puntos de sutura
-señal de stop
+senal de stop
 estufa
 fresa
 farola
@@ -281,7 +281,7 @@ submarino
 maleta
 sol
 cisne
-suéter
+sueter
 juego de columpios
 espada
 jeringa
@@ -289,10 +289,10 @@ camiseta
 mesa
 tetera
 oso de peluche
-teléfono
-televisión
+telefono
+television
 raqueta de tenis
-tienda de campaña
+tienda de campana
 La Torre Eiffel
 La Gran Muralla China
 La Mona Lisa
@@ -305,21 +305,21 @@ cepillo de dientes
 pasta de dientes
 tornado
 tractor
-semáforo
+semaforo
 tren
-árbol
-triángulo
-trombón
-camión
+arbol
+triangulo
+trombon
+camion
 trompeta
 paraguas
 ropa interior
 furgoneta
-jarrón
-violín
+jarron
+violin
 lavadora
-sandía
-tobogán acuático
+sandia
+tobogan acuatico
 ballena
 rueda
 molino de viento
