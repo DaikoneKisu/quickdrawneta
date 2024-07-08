@@ -90,9 +90,11 @@ class QuickDrawApp:
                 self.root.after(INTERVALO_REFRESCO, self.refrescar_tiempo_restante)
             else:
                 self.timer_label.config(text="Tiempo: 0")
+                self.clear()
                 # self.points -= 1
                 # self.points_label.config(text=f"Puntos: {self.points}")
                 self.canvas.create_text(320, 240, text="TIEMPO!", fill="white", font=("Helvetica", 36))
+                self.rondas += 1 
                 self.root.after(3000, self.clear_and_set_new_category)
 
     def detener_temporizador(self):
@@ -171,8 +173,8 @@ class QuickDrawApp:
 
     def end_game(self):
         self.clear()
-        self.canvas.create_text(320, 240, text=f"TU PUNTUACION: {self.points}", fill="white", font=("Helvetica", 36))
         self.detener_temporizador()
+        self.canvas.create_text(320, 240, text=f"TU PUNTUACION: {self.points}", fill="white", font=("Helvetica", 36))
         self.restart_button.config(state=tk.NORMAL)  # Habilitar el botón de reiniciar
         self.exit_button.config(state=tk.NORMAL)  # Habilitar el botón de salir
 
