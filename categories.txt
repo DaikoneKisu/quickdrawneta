@@ -14,8 +14,8 @@ mochila
 plátano
 venda
 granero
-béisbol
 bate de béisbol
+béisbol
 cesta
 baloncesto
 murciélago
@@ -29,14 +29,11 @@ cinturón
 banco
 bicicleta
 binoculares
-pájaro
 pastel de cumpleaños
 mora
-arándano
 libro
-bumerán
-tapa de botella
-corbata de moño
+tapón de botella
+pajarita
 pulsera
 cerebro
 pan
@@ -58,43 +55,41 @@ camuflaje
 fogata
 vela
 cañón
+canoa (1)
 canoa
-coche
 zanahoria
 castillo
 gato
 ventilador de techo
-violonchelo
 teléfono celular
+violonchelo
 silla
 candelabro
-iglesia
 círculo
-clarinete
 reloj
 nube
 taza de café
 brújula
 computadora
 galleta
-nevera
+nevera portátil
 sofá
 vaca
 cangrejo
 crayón
 cocodrilo
 corona
-crucero
+barco de crucero
 taza
 diamante
 lavavajillas
 trampolín
 perro
 delfín
-rosquilla
+donut
 puerta
 dragón
-tocador
+cómoda
 taladro
 tambores
 pato
@@ -107,14 +102,14 @@ goma de borrar
 ojo
 gafas
 cara
-abanico
+ventilador
 pluma
-cerca
+valla
 dedo
-boca de incendios
+hidrante
 chimenea
+camión de bomberos (1)
 camión de bomberos
-pez
 flamenco
 linterna
 chanclas
@@ -125,8 +120,8 @@ pie
 tenedor
 rana
 sartén
-jardín
 manguera de jardín
+jardín
 jirafa
 perilla
 palo de golf
@@ -148,11 +143,11 @@ palo de hockey
 caballo
 hospital
 globo aerostático
-hot dog
+perro caliente
 jacuzzi
 reloj de arena
+planta de casa
 casa
-planta de interior
 huracán
 helado
 chaqueta
@@ -164,13 +159,13 @@ rodilla
 cuchillo
 escalera
 linterna
-computadora portátil
+portátil
 hoja
 pierna
 bombilla
 encendedor
 faro
-rayo
+relámpago
 línea
 león
 lápiz labial
@@ -179,21 +174,13 @@ piruleta
 buzón
 mapa
 marcador
-fósforos
+cerillas
 megáfono
-sirena
-micrófono
-microondas
-mono
-luna
-mosquito
-motocicleta
-montaña
 ratón
 bigote
 boca
 taza
-seta
+champiñón
 clavo
 collar
 nariz
@@ -203,23 +190,23 @@ pulpo
 cebolla
 horno
 búho
-pincel
 lata de pintura
+pincel
 palmera
 panda
 pantalones
-clip de papel
+clip
 paracaídas
 loro
 pasaporte
-cacahuete
+maní
 pera
 guisantes
 lápiz
 pingüino
 piano
-camioneta pickup
-marco de imagen
+camioneta
+marco de foto
 cerdo
 almohada
 piña
@@ -230,8 +217,8 @@ estanque
 piscina
 paleta
 postal
-patata
-enchufe eléctrico
+papa
+tomacorriente
 bolso
 conejo
 mapache
@@ -254,21 +241,21 @@ tijeras
 escorpión
 destornillador
 tortuga marina
-balancín
+sube y baja
 tiburón
 oveja
 zapato
 pantalones cortos
 pala
 fregadero
-monopatín
+patineta
 calavera
 rascacielos
-bolsa de dormir
+saco de dormir
 cara sonriente
 caracol
 serpiente
-esnórquel
+snorkel
 copo de nieve
 muñeco de nieve
 balón de fútbol
@@ -279,10 +266,9 @@ cuchara
 hoja de cálculo
 cuadrado
 garabato
-ardilla
 escaleras
 estrella
-filete
+bistec
 estéreo
 estetoscopio
 puntos de sutura
@@ -290,18 +276,19 @@ señal de stop
 estufa
 fresa
 farola
-judía verde
+ejote
 submarino
 maleta
 sol
 cisne
 suéter
-columpio
+juego de columpios
 espada
 jeringa
+camiseta
 mesa
 tetera
-osito de peluche
+oso de peluche
 teléfono
 televisión
 raqueta de tenis
@@ -315,7 +302,7 @@ dedo del pie
 inodoro
 diente
 cepillo de dientes
-pasta dental
+pasta de dientes
 tornado
 tractor
 semáforo
@@ -325,7 +312,6 @@ triángulo
 trombón
 camión
 trompeta
-camiseta
 paraguas
 ropa interior
 furgoneta

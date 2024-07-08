@@ -14,7 +14,7 @@ def load_labels(filename):
         labels = f.read().splitlines()
     return labels
 
-categories = load_labels('./class_names.txt')
+categories = load_labels('./categories.txt')
 
 INTERVALO_REFRESCO = 500  # En milisegundos
 TIEMPO_INICIAL = 50  # En segundos
