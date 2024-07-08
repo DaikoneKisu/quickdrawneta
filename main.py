@@ -1,12 +1,12 @@
 import tkinter as tk
-from keras.models import load_model
+from keras._tf_keras.keras.models import load_model
 import numpy as np
 from collections import deque
 import cv2
 import random
 from datetime import datetime, timedelta
 
-model = load_model('model/QuickDraw.h5')
+model = load_model('model/quickdrawSalcedinho.h5')
 
 # Cargar nombres de clases desde el archivo labels.txt
 def load_labels(filename):
@@ -14,7 +14,7 @@ def load_labels(filename):
         labels = f.read().splitlines()
     return labels
 
-categories = load_labels('model/categories.txt')
+categories = load_labels('./class_names.txt')
 
 INTERVALO_REFRESCO = 500  # En milisegundos
 TIEMPO_INICIAL = 50  # En segundos
