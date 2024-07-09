@@ -86,7 +86,7 @@ model.compile(loss='categorical_crossentropy',
               metrics=['top_k_categorical_accuracy'])
 print(model.summary())
 
-model.fit(x = x_train, y = y_train, validation_split=0.1, batch_size = 256, verbose=2, epochs=5)
+model.fit(x = x_train, y = y_train, validation_split=0.1, batch_size = 256, verbose=2, epochs=10)
 
 score = model.evaluate(x_test, y_test, verbose=0)
 print('Test accuarcy: {:0.2f}%'.format(score[1] * 100))
@@ -104,4 +104,4 @@ with open('class_names.txt', 'w') as file_handler:
     for item in class_names:
         file_handler.write("{}\n".format(item))
 
-model.save('quickdrawSalcedinho.h5')
+model.save('quickdrawSalcedinho2.h5')
