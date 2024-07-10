@@ -7,7 +7,7 @@ from keras._tf_keras.keras.callbacks import EarlyStopping
 import matplotlib.pyplot as plt
 from random import randint
 
-def load_data(root, iteracionNumero = 0, vfold_ratio=0.2, max_items_per_class= 4000 ):
+def load_data(root, iteracionNumero = 0, vfold_ratio=0.2, max_items_per_class= 100 ):
     all_files = glob.glob(os.path.join(root, '*.npy'))
 
     #initialize variables 
@@ -96,20 +96,22 @@ model.compile(loss='categorical_crossentropy',
 print(model.summary())
 
 # Train model
-model.fit(x = x_train, y = y_train, validation_split=0.1, batch_size = 256, verbose=2, epochs=10)
+model.fit(x = x_train, y = y_train, validation_split=0.1, batch_size = 25, verbose=2, epochs=4)
 
 # Delete from memory x_train, y_train, x_test, y_test, class_names and num_classes
 del x_train, y_train, x_test, y_test, class_names, num_classes
 
+_finalBatch = 0
 # Re-train the model for 10 batches
 for numberOfBatch in range(1, 11):
     print('Se esta corriendo el BATCH numero ', numberOfBatch)
     x_train, y_train, x_test, y_test, class_names, num_classes = get_train_datas(numberOfBatch)
-    model.fit(x=x_train, y=y_train, validation_split=0.1, batch_size=256, verbose=2, epochs=10)
+    model.fit(x=x_train, y=y_train, validation_split=0.1, batch_size=25, verbose=2, epochs=4)
     del x_train, y_train, x_test, y_test, class_names, num_classes
+    _finalBatch = numberOfBatch
 
 # Evaluate the model
-x_train, y_train, x_test, y_test, class_names, num_classes = get_train_datas()
+x_train, y_train, x_test, y_test, class_names, num_classes = get_train_datas(_finalBatch + 1)
 score = model.evaluate(x_test, y_test, verbose=0)
 print('Test accuarcy: {:0.2f}%'.format(score[1] * 100))
 
