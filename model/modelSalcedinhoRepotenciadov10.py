@@ -6,6 +6,7 @@ from keras import layers, models
 from keras._tf_keras.keras.callbacks import EarlyStopping
 import matplotlib.pyplot as plt
 from random import randint
+import threading
 
 def load_data(root, iteracionNumero = 0, vfold_ratio=0.2, max_items_per_class= 100 ):
     all_files = glob.glob(os.path.join(root, '*.npy'))
@@ -114,9 +115,26 @@ for numberOfBatch in range(1, 11):
     class_names = _class_names
     num_classes = _num_classes
     print('Se esta corriendo el BATCH numero ', numberOfBatch)
-    _x_train, _y_train, _x_test, _y_test, _class_names, _num_classes = get_train_datas(numberOfBatch + 1)
-    model.fit(x=x_train, y=y_train, validation_split=0.1, batch_size=25, verbose=2, epochs=4)
-    del x_train, y_train, x_test, y_test, class_names, num_classes
+
+    def train_model(x_train, y_train, x_test, y_test, class_names, num_classes, model):
+        model.fit(x=x_train, y=y_train, validation_split=0.1, batch_size=25, verbose=2, epochs=4)
+        del x_train, y_train, x_test, y_test, class_names, num_classes
+
+    def get_next_data_train(_x_train, _y_train, _x_test, _y_test, _class_names, _num_classes, model, batch_number):
+        _x_train, _y_train, _x_test, _y_test, _class_names, _num_classes = get_train_datas(numberOfBatch + 1)
+
+    # Create threads for training and saving the model
+    train_thread = threading.Thread(target=train_model, args=(x_train, y_train, x_test, y_test, class_names, num_classes, model))
+    next_train_thread = threading.Thread(target=get_next_data_train, args=(_x_train, _y_train, _x_test, _y_test, _class_names, _num_classes, model, numberOfBatch))
+
+    # Start the threads
+    train_thread.start()
+    next_train_thread.start()
+
+    # Wait for both threads to finish
+    train_thread.join()
+    next_train_thread.join()
+
     model.save('quickdrawSalcedinhoREPOTENCIAO_' + str(numberOfBatch) + '.h5')
     _finalBatch = numberOfBatch
 
