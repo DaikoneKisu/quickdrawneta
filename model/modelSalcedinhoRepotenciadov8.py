@@ -7,7 +7,7 @@ from keras._tf_keras.keras.callbacks import EarlyStopping
 import matplotlib.pyplot as plt
 from random import randint
 
-def load_data(root, iteracionNumero = 0, vfold_ratio=0.2, max_items_per_class= 100 ):
+def load_data(root, iteracionNumero = 0, vfold_ratio=0.2, max_items_per_class= 250 ):
     all_files = glob.glob(os.path.join(root, '*.npy'))
 
     #initialize variables 
@@ -96,7 +96,7 @@ model.compile(loss='categorical_crossentropy',
 print(model.summary())
 
 # Train model
-model.fit(x = x_train, y = y_train, validation_split=0.1, batch_size = 25, verbose=2, epochs=4)
+model.fit(x = x_train, y = y_train, validation_split=0.1, batch_size = 50, verbose=2, epochs=4)
 
 # Delete from memory x_train, y_train, x_test, y_test, class_names and num_classes
 del x_train, y_train, x_test, y_test, class_names, num_classes
@@ -104,18 +104,10 @@ del x_train, y_train, x_test, y_test, class_names, num_classes
 # Re-train the model for 10 batches
 _finalBatch = 0
 
-_x_train, _y_train, _x_test, _y_test, _class_names, _num_classes = get_train_datas(0+1)
-
-for numberOfBatch in range(1, 11):
-    x_train = _x_train
-    y_train = _y_train
-    x_test = _x_test
-    y_test = _y_test
-    class_names = _class_names
-    num_classes = _num_classes
+for numberOfBatch in range(1, 20):
+    x_train, y_train, x_test, y_test, class_names, num_classes = get_train_datas(numberOfBatch)
     print('Se esta corriendo el BATCH numero ', numberOfBatch)
-    _x_train, _y_train, _x_test, _y_test, _class_names, _num_classes = get_train_datas(numberOfBatch + 1)
-    model.fit(x=x_train, y=y_train, validation_split=0.1, batch_size=25, verbose=2, epochs=4)
+    model.fit(x=x_train, y=y_train, validation_split=0.1, batch_size=50, verbose=2, epochs=4)
     del x_train, y_train, x_test, y_test, class_names, num_classes
     model.save('quickdrawSalcedinhoREPOTENCIAO_' + str(numberOfBatch) + '.h5')
     _finalBatch = numberOfBatch
