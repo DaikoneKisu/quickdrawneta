@@ -6,7 +6,7 @@ import cv2
 import random
 from datetime import datetime, timedelta
 
-model = load_model('model/quickdrawSalcedinho2.h5')
+model = load_model('model/quickdrawSalcedinhoREPOTENCIAO_19.h5')
 
 # Cargar nombres de clases desde el archivo labels.txt
 def load_labels(filename):
