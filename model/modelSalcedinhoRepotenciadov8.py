@@ -108,6 +108,7 @@ for numberOfBatch in range(1, 11):
     x_train, y_train, x_test, y_test, class_names, num_classes = get_train_datas(numberOfBatch)
     model.fit(x=x_train, y=y_train, validation_split=0.1, batch_size=25, verbose=2, epochs=4)
     del x_train, y_train, x_test, y_test, class_names, num_classes
+    model.save('quickdrawSalcedinhoREPOTENCIAO_' + str(numberOfBatch) + '.h5')
     _finalBatch = numberOfBatch
 
 # Evaluate the model
