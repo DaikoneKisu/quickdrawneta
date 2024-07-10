@@ -118,14 +118,15 @@ for numberOfBatch in range(1, 11):
 
     def train_model(x_train, y_train, x_test, y_test, class_names, num_classes, model):
         model.fit(x=x_train, y=y_train, validation_split=0.1, batch_size=25, verbose=2, epochs=4)
-        del x_train, y_train, x_test, y_test, class_names, num_classes
 
-    def get_next_data_train(_x_train, _y_train, _x_test, _y_test, _class_names, _num_classes, model, batch_number):
+    def get_next_data_train(output, model, batch_number):
         _x_train, _y_train, _x_test, _y_test, _class_names, _num_classes = get_train_datas(numberOfBatch + 1)
+        output.extend([_x_train, _y_train, _x_test, _y_test, _class_names, _num_classes])
 
     # Create threads for training and saving the model
+    output = []
     train_thread = threading.Thread(target=train_model, args=(x_train, y_train, x_test, y_test, class_names, num_classes, model))
-    next_train_thread = threading.Thread(target=get_next_data_train, args=(_x_train, _y_train, _x_test, _y_test, _class_names, _num_classes, model, numberOfBatch))
+    next_train_thread = threading.Thread(target=get_next_data_train, args=(output, model, numberOfBatch))
 
     # Start the threads
     train_thread.start()
@@ -134,6 +135,10 @@ for numberOfBatch in range(1, 11):
     # Wait for both threads to finish
     train_thread.join()
     next_train_thread.join()
+    
+    _x_train, _y_train, _x_test, _y_test, _class_names, _num_classes = output
+    del x_train, y_train, x_test, y_test, class_names, num_classes
+    del output
 
     model.save('quickdrawSalcedinhoREPOTENCIAO_' + str(numberOfBatch) + '.h5')
     _finalBatch = numberOfBatch
