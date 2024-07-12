@@ -17,7 +17,7 @@ def load_labels(filename):
 categories = load_labels('./categories.txt')
 
 INTERVALO_REFRESCO = 500  # En milisegundos
-TIEMPO_INICIAL = 70  # En segundos
+TIEMPO_INICIAL = 50  # En segundos
 MAX_RONDAS = 6  # Número máximo de rondas
 
 class QuickDrawApp:
