@@ -1,1 +1,4 @@
-model/dataset/
+quickdrawneta/datasets/
+.venv
+quickdrawneta.egg-info
+*.npy
