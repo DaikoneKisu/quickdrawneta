@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "quickdrawneta"
+version = "0.1.0"
+requires-python = ">= 3.10"
+dependencies = [
+  "pandas >= 2.2",
+  "numpy >= 1.26",
+  "pillow >= 10.3",
+  "opencv-python >= 4.9",
+  "imutils >= 0.5",
+  "scipy >= 1.13",
+  "tensorflow >= 2.16",
+  "matplotlib >= 3.8",
+  "scikit-learn >= 1.4",
+  "seaborn >= 0.13",
+]
+
+[project.scripts]
+train = "quickdrawneta.model:train"
+test = "quickdrawneta.model:test"
+process-and-save-dataset = "quickdrawneta.model:process_and_save_dataset"
+summary = "quickdrawneta.model:summary"
